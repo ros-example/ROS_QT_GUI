@@ -15,7 +15,7 @@ class pyGui(QWidget):
         ui_file = os.path.join(self.ui_dir, 'pygui.ui')
         loadUi(ui_file, self)
         self.pub = rospy.Publisher("pygui_topic", String, queue_size=10)
-        rospy.init_node('py_gui')
+        rospy.init_node('py_imu')
         self.is_pub = False
         self.current_value = self.horizontalSlider.value()
         print (self.current_value)

@@ -1,13 +1,13 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import sys
 import rospy
 from std_msgs.msg import String
-from PyQt4 import QtGui
-from PyQt4.QtGui import QLabel, QVBoxLayout, QHBoxLayout, QSlider, QPushButton
-from PyQt4.QtCore import Qt
+from PyQt5 import QtGui
+from PyQt5.QtWidgets import QApplication ,QWidget, QLabel, QVBoxLayout, QHBoxLayout, QSlider, QPushButton
+from PyQt5.QtCore import Qt
 
-class PyGui(QtGui.QWidget):
+class PyGui(QWidget):
     def __init__(self):
         super(PyGui, self).__init__()
         self.setObjectName('PyGui')
@@ -48,7 +48,7 @@ class PyGui(QtGui.QWidget):
 
 
 if __name__ == "__main__":
-    app=QtGui.QApplication(sys.argv)
+    app=QApplication(sys.argv)
     pyShow = PyGui()
     pyShow.show()
     sys.exit(app.exec_())
