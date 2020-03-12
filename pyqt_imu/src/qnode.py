@@ -3,6 +3,7 @@
 from PyQt5.QtCore import QThread
 import rospy
 from std_msgs.msg import String
+import os
 
 class QNode(QThread):
 
@@ -20,14 +21,13 @@ class QNode(QThread):
         rospy.loginfo("init")
 
     def run(self) -> None:
-        rospy.loginfo("run ....")
+        rospy.loginfo("run : thread pid %s ...." % os.getpid())
         rospy.spin()
 
     def Callback( self,data):
 
-        rospy.loginfo("%s" % rospy.Time.now())
-        rospy.loginfo(rospy.get_caller_id() + "I heard %s", data.data)
-        print(rospy.get_caller_id() + "I heard %s", data.data)
+        rospy.loginfo("%s " % rospy.Time.now())
+        rospy.loginfo(rospy.get_caller_id() + "I heard %s : pid = %s"% (data.data,os.getpid()))
 
 if __name__ == "__main__":
     from PyQt5.QtCore import QCoreApplication
